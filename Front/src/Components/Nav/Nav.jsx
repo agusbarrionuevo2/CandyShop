@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Flex, Text, Button, Stack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-
+import img from "../../assets/candy_logo.svg";
 
 const Nav = (props) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -59,30 +59,71 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
 const MenuLinks = ({ isOpen }) => {
   return (
     <Box
+      width="100%"
       display={{ base: isOpen ? "block" : "none", md: "block" }}
       flexBasis={{ base: "100%", md: "auto" }}
     >
       <Stack
         spacing={8}
         align="center"
-        justify={["center", "space-between", "flex-end", "flex-end"]}
+        justify={["center", "space-between", "center", "space-between"]}
         direction={["column", "row", "row", "row"]}
         pt={[4, 4, 0, 0]}
       >
-        <Flex align="center" justifyContent="center" display="flex">
-          <Link to="/" ><img src="src\assets\candy_logo.svg"/></Link>
+        <Flex
+          direction="row"
+          align="center"
+          justifyContent="center"
+          display="flex"
+        >
+          <Link to="/">
+            <Flex
+              color="blackAlpha.900"
+              direction="row"
+              gap={5}
+              align="center"
+              justifyContent="center"
+              display="flex"
+            >
+              <img src={img} />
+              Candy
+            </Flex>
+          </Link>
         </Flex>
-        <Link to="/how"> Account </Link>
-        <Link to="/signin"> Sign In </Link>
-        <Link to="/signup"> Sign Up </Link>
-        <Link to="/cart" isLast>
+        <Flex align="center" justifyContent="space-between" gap={20}>
+          <Link to="/how">
+            {" "}
+            <Button colorScheme="primary" variant="outline">
+              Account
+            </Button>{" "}
+          </Link>
+          <Link to="/signin">
+            {" "}
+            <Button colorScheme="primary" variant="outline">
+              Sign In{" "}
+            </Button>
+          </Link>
+          <Link to="/signup">
+            {" "}
+            <Button colorScheme="primary" variant="outline">
+              Sign Up{" "}
+            </Button>
+          </Link>
+          <Link to="/create">
+            {" "}
+            <Button colorScheme="primary" variant="outline">
+              Create{" "}
+            </Button>
+          </Link>
+        </Flex>
+        <Link to="/cart">
           <Button
             size="sm"
             rounded="md"
-            color={["primary.500", "primary.500", "white", "red"]}
-            bg={["white", "white", "primary.200", "primary.500"]}
+            color={["primary.200", "primary.500", "white", "red.100"]}
+            bg={["white", "white", "primary.200", "primary.300"]}
             _hover={{
-              bg: ["primary.300"]
+              bg: ["primary.300"],
             }}
           >
             🛒
@@ -101,8 +142,7 @@ const NavBarContainer = ({ children, ...props }) => {
       justify="center"
       wrap="wrap"
       w="100%"
-      mb={8}
-      p={8}
+      py={6}
       bg={["primary.500", "primary.500", "transparent", "transparent"]}
       color={["white", "white", "primary.700", "primary.700"]}
       {...props}
@@ -113,12 +153,6 @@ const NavBarContainer = ({ children, ...props }) => {
 };
 
 export default Nav;
-
-
-
-
-
-
 
 /* import React from 'react'
 
